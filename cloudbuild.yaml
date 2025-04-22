@@ -1,9 +1,9 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/wordpress-container/wordpress:$SHORT_SHA', '.' ]
+  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/dev-staging-337304/wordpress-container/wordpress:$SHORT_SHA', '.' ]
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'push', 'us-central1-docker.pkg.dev/$PROJECT_ID/wordpress-container/wordpress:$SHORT_SHA' ]
+  args: [ 'push', 'us-central1-docker.pkg.dev/dev-staging-337304/wordpress-container/wordpress:$SHORT_SHA' ]
 
 - name: 'gcr.io/cloud-builders/kubectl'
   env:
@@ -19,7 +19,7 @@ steps:
   - 'set'
   - 'image'
   - 'deployment/wordpress'
-  - 'wordpress=us-central1-docker.pkg.dev/$PROJECT_ID/wordpress-container/wordpress:$SHORT_SHA'
+  - 'wordpress=us-central1-docker.pkg.dev/dev-staging-337304/wordpress-container/wordpress:$SHORT_SHA'
 
 images:
-- 'us-central1-docker.pkg.dev/$PROJECT_ID/wordpress-container/wordpress:$SHORT_SHA'
+- 'us-central1-docker.pkg.dev/dev-staging-337304/wordpress-container/wordpress:$SHORT_SHA'
