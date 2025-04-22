@@ -1,0 +1,25 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/wordpress-container/wordpress:$SHORT_SHA', '.' ]
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'push', 'us-central1-docker.pkg.dev/$PROJECT_ID/wordpress-container/wordpress:$SHORT_SHA' ]
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  env:
+  - 'CLOUDSDK_COMPUTE_REGION=us-central1'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=wordpress-cluster'
+  args:
+  - 'apply'
+  - '-f'
+  - 'k8s/'
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  args:
+  - 'set'
+  - 'image'
+  - 'deployment/wordpress'
+  - 'wordpress=us-central1-docker.pkg.dev/$PROJECT_ID/wordpress-container/wordpress:$SHORT_SHA'
+
+images:
+- 'us-central1-docker.pkg.dev/$PROJECT_ID/wordpress-container/wordpress:$SHORT_SHA'
