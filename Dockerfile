@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # RUN apt-get update && apt-get install -y --no-install-recommends libmagickwand-dev
 # RUN pecl install imagick
 # RUN docker-php-ext-enable imagick
-#
+
 
 # ------------------------------------------------------------------------------
 # Copy custom WordPress configuration (optional)
