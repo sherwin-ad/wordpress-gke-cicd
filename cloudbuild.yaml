@@ -22,7 +22,7 @@ steps:
   - 'set'
   - 'image'
   - 'deployment/wordpress'
-  - '-n wordpress'
+  - '--namesapce=wordpress'
   - 'wordpress=us-central1-docker.pkg.dev/dev-staging-337304/wordpress-container/wordpress:$SHORT_SHA'
 
 images:
