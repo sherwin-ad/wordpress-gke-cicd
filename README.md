@@ -54,5 +54,17 @@
    ```
    gh repo create wordpress-gke-cicd --public
    ```
+
+   ```
+   git init
+   git add .
+   git commit -m "first commit"
+   git branch -M main
+   git remote add origin git@github.com:sherwin-ad/wordpress-gke-cicd.git
+   git push -u origin main
+   ```
    
 
+   ```
+   sed 's/$PROJECT_ID/dev-staging-337304/g' cloudbuild.yaml
+   ```
